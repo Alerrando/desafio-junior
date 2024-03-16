@@ -47,3 +47,22 @@ body {
     height: 40px;
     width: 40px;
 }
+
+.calculator-body button:hover {
+    transform: scale(1.1);
+}
+
+.toast-container {
+    background-color: #f00;
+    border-radius: 4px;
+    bottom: 1%;
+    left: -100%;
+    padding: 8px;
+    position: absolute;
+    transition: all 0.5s;
+    width: 18%;
+}
+
+.toast-container.true {
+    left: 1%;
+}

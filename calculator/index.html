@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Calculadora</title>
+    <title>Calculator</title>
 </head>
 <body>
     <section class="container-calculator">
@@ -28,13 +28,17 @@
             <button class="button-calc">1</button>
             <button class="button-calc">2</button>
             <button class="button-calc">3</button>
-            <button>Enter</button>
+            <button class="button-result">=</button>
             <button class="button-calc">(</button>
             <button class="button-calc">0</button>
             <button class="button-calc">)</button>
-            <button> << </button>
+            <button class="button-delete"> << </button>
         </div>
     </section>
+
+    <div class="toast-container">
+        <span class="toast-message"></span>
+    </div>
 
     <script src="./script.js"></script>
 </body>
