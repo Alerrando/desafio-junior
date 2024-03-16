@@ -17,24 +17,26 @@
       </nav>
       <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" style="width: 35%!important;" id="nav-square" role="tabpanel" aria-labelledby="nav-square-tab">
-          <div class="card flex-row align-items-center mx-2 my-3 px-2 gap-4">
-              <div class="card-body input-group gap-5 px-0">
-                <input type="text" class="form-control rounded-2" placeholder="AreaX" aria-label="AreaX" aria-describedby="basic-addon2">
-                <input type="text" class="form-control rounded-2" placeholder="AreaY" aria-label="AreaY" aria-describedby="basic-addon2">
+          <div class="card mx-2 my-3 px-2 gap-4">
+              <div class="card-body align-items-center input-group gap-4 px-0">
+                <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="AreaX" aria-label="AreaX" aria-describedby="basic-addon2" id="area-x">
+                <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="AreaY" aria-label="AreaY" aria-describedby="basic-addon2" id="area-y">
+                
+                <button type="button" id="calc-square" class="btn btn-success h-25 py-2 px-4 rounded-3">Success</button>
               </div>
 
-              <button type="button" id="calc-square" class="btn btn-success h-25 py-2 px-4">Success</button>
+              <div class="card-footer bg-transparent p-0 border-0">
+                <span class="result-calc-square text-danger"></span>
+              </div>
           </div>
 
-          <div class="card-footer">
-            <span class="result-calc-square"></span>
-          </div>
         </div>
         <div class="tab-pane fade" id="nav-rectangle" role="tabpanel" aria-labelledby="nav-rectangle-tab">...</div>
         <div class="tab-pane fade" id="nav-triangle" role="tabpanel" aria-labelledby="nav-triangle-tab">...</div>
         <div class="tab-pane fade" id="nav-circle" role="tabpanel" aria-labelledby="nav-circle-tab">...</div>
       </div>
-
+    
+    <script src="./script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
