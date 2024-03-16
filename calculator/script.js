@@ -2,6 +2,7 @@ const inputCalculator = document.querySelector('#input');
 const buttonCalc = document.querySelectorAll(".button-calc");
 const buttonResult = document.querySelector(".button-result");
 const buttonDelete = document.querySelector(".button-delete");
+const buttonClear = document.querySelector(".button-clear");
 
 for (let index = 0; index < buttonCalc.length; index++) {
     buttonCalc[index].addEventListener("click", (e) => {
@@ -28,4 +29,8 @@ buttonResult.addEventListener("click", () => {
 
 buttonDelete.addEventListener("click", () => {
     inputCalculator.value = inputCalculator.value.slice(0, inputCalculator.value.length - 1);
+});
+
+buttonClear.addEventListener("click", () => {
+    inputCalculator.value = "";
 });

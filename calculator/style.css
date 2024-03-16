@@ -34,6 +34,12 @@ body {
     width: 100%;
 }
 
+.calculator-header input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .calculator-body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
