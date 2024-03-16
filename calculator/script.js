@@ -25,3 +25,7 @@ buttonResult.addEventListener("click", () => {
         }, 5000)
     }
 });
+
+buttonDelete.addEventListener("click", () => {
+    inputCalculator.value = inputCalculator.value.slice(0, inputCalculator.value.length - 1);
+});
