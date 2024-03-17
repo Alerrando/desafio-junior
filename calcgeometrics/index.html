@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Area of Geometric Shapes:</title>
+</head>
+<body>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" id="nav-square-tab" data-bs-toggle="tab" data-bs-target="#nav-square" type="button" role="tab" aria-controls="nav-square" aria-selected="true">Quadrado</button>
+          <button class="nav-link" id="nav-rectangle-tab" data-bs-toggle="tab" data-bs-target="#nav-rectangle" type="button" role="tab" aria-controls="nav-rectangle" aria-selected="false">Retângulo</button>
+          <button class="nav-link" id="nav-triangle-tab" data-bs-toggle="tab" data-bs-target="#nav-triangle" type="button" role="tab" aria-controls="nav-triangle" aria-selected="false">Triângulo </button>
+          <button class="nav-link" id="nav-circle-tab" data-bs-toggle="tab" data-bs-target="#nav-circle" type="button" role="tab" aria-controls="nav-circle" aria-selected="false">Círculo </button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" style="width: 35%!important;" id="nav-square" role="tabpanel" aria-labelledby="nav-square-tab">
+          <div class="card mx-2 my-3 px-2 gap-4">
+              <div class="card-body align-items-center input-group gap-4 px-0">
+                <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="AreaX" aria-label="AreaX" aria-describedby="basic-addon2" id="area-x">
+                <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="AreaY" aria-label="AreaY" aria-describedby="basic-addon2" id="area-y">
+                
+                <button type="button" id="calc-square" class="btn btn-success h-25 py-2 px-4 rounded-3">Calcular</button>
+              </div>
+
+              <div class="card-footer bg-transparent p-0 border-0">
+                <span class="result-calc-square text-danger"></span>
+              </div>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="nav-rectangle" style="width: 35%!important;" role="tabpanel" aria-labelledby="nav-rectangle-tab">
+          <div class="card mx-2 my-3 px-2 gap-4">
+            <div class="card-body align-items-center input-group gap-4 px-0">
+              <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="Comprimento" aria-label="length" aria-describedby="basic-addon2" id="length">
+              <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="Largura" aria-label="width" aria-describedby="basic-addon2" id="width">
+              
+              <button type="button" id="calc-rectangle" class="btn btn-success h-25 py-2 px-4 rounded-3">Calcular</button>
+            </div>
+
+            <div class="card-footer bg-transparent p-0 border-0">
+              <span class="result-calc-rectangle text-danger"></span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-triangle" style="width: 35%!important;" role="tabpanel" aria-labelledby="nav-triangle-tab">
+          <div class="card mx-2 my-3 px-2 gap-4">
+            <div class="card-body align-items-center input-group gap-4 px-0">
+              <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="Base" aria-label="base" aria-describedby="basic-addon2" id="base">
+              <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="Altura" aria-label="height" aria-describedby="basic-addon2" id="height">
+              
+              <button type="button" id="calc-triangle" class="btn btn-success h-25 py-2 px-4 rounded-3">Calcular</button>
+            </div>
+
+            <div class="card-footer bg-transparent p-0 border-0">
+              <span class="result-calc-triangle text-danger"></span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" style="width: 35%!important;" id="nav-circle" role="tabpanel" aria-labelledby="nav-circle-tab">
+          <div class="card mx-2 my-3 px-2 gap-4">
+            <div class="card-body align-items-center input-group gap-4 px-0">
+              <input type="text" class="form-control rounded-2" style="width: 40%!important;" placeholder="Área" aria-label="area" aria-describedby="basic-addon2" id="area">
+              
+              <button type="button" id="calc-circle" class="btn btn-success h-25 py-2 px-4 rounded-3">Calcular</button>
+            </div>
+
+            <div class="card-footer bg-transparent p-0 border-0">
+              <span class="result-calc-circle text-danger"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
