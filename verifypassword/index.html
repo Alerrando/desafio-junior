@@ -30,7 +30,7 @@
                             <input type="password" id="password" placeholder="Insira sua senha">
                         </div>
                     </div>
-                    <button class="button-calc" onchange="verifyPassword(this)">Verificar Senha</button>
+                    <button type="button" class="button-verify" onclick="handleButton()">Verificar Senha</button>
                 </div>
             </form>
     
@@ -48,6 +48,10 @@
             </footer>
         </div>
     </main>
+
+    <div class="toast-container">
+        <span class="toast-message"></span>
+    </div>
 
     <script src="./script.js"></script>
 </body>
