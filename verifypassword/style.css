@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.main-container {
+    align-items: center;
+    background-color: #333333;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 16px;
+    width: 50%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    height: 90%;
+    width: 80%;
+}
+
+.container .container-header {
+    padding: 8px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.container form {
+    width: 100%;
+}
+
+form .container-body,
+.container-body .container-input {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.input-group input {
+    border: none;
+    border-radius: 4px;
+    padding: 8px 6px;
+    outline: none;
+}
+
+.container-body button {
+    background-color: transparent;
+    border: 1px solid rgb(22 163 74);
+    border-radius: 4px;
+    color: rgb(22 163 74);
+    cursor: pointer;
+    padding: 8px 4px;
+    transition: all 0.5s;
+    width: 100%;
+}
+
+.container-body button:hover {
+    background-color: rgb(22 163 74 / 80%);
+    color: white;
+}
+
+.container-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    width: 100%;
+}
+
+.footer-separator {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    width: 100%;
+}
+
+.footer-separator .separator {
+    border-bottom: 2px solid #fff;
+    width: 100%;
+}
+
+.separator span {
+    font-weight: 700;
+}
+
+.footer-terms-privacy {
+    text-align: center;
+    width: 100%;
+}
+
+.footer-terms-privacy .span-response:first-child {
+    border-right: 1px solid #fff;
+    padding-right: 8px;
+    margin-left: auto;
+    width: fit-content;
+}
+
+.footer-terms-privacy .span-response:last-child {
+    padding-left: 8px;
+}
+
+.aside-container {
+    background-color: #5e5be5;
+    height: 100%;
+    width: 50%;
+}

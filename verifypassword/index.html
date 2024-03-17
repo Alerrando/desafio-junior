@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Verify Password</title>
+</head>
+<body>
+    <aside class="aside-container">
+    
+    </aside>
+
+    <main class="main-container">
+        <div class="container">
+            <header class="container-header">
+                <h1>Validate Password</h1>
+            </header>
+    
+            <form>
+                <div class="container-body">
+                    <div class="container-input">
+                        <div class="input-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Insira seu email">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="password">Password*</label>
+                            <input type="password" id="password" placeholder="Insira sua senha">
+                        </div>
+                    </div>
+                    <button class="button-calc" onchange="verifyPassword(this)">Verificar Senha</button>
+                </div>
+            </form>
+    
+            <footer class="container-footer">
+                <div class="footer-separator">
+                    <div class="separator"></div>
+                    <span>//</span> 
+                    <div class="separator"></div> 
+                </div>
+
+                <div class="footer-terms-privacy">
+                    <span class="span-response">Terms of Use</span>
+                    <span class="span-response">Privacy Policy</span>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
