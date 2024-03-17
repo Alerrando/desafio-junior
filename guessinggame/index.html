@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <header class="container-header">
+            <div class="header-response">
+                <span class="span-response"></span>
+            </div>
+        </header>
+
+        <div class="container-body">
+            <div class="container-input">
+                <input type="number" id="number" placeholder="Insira um número">
+            </div>
+            
+            <button class="button-calc" onclick="verifyNumber(this)">Calcular</button>
+
+            <span class="quant-attempts"></span>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
