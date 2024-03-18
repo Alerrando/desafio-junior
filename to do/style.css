@@ -1,0 +1,184 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+.container-main {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: 85%;
+    text-align: center;
+    width: 40%;
+}
+
+.container-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.container-header form,
+    .modal-form {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+form .input-group {
+    align-items: center;
+    border: 1px solid rgb(212 212 216);
+    border-radius: 8px;
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    width: 100%;
+}
+
+.input-group input {
+    background: transparent;
+    border: none;
+    padding: 0px 4px;
+    outline: none;
+    width: 100%;
+}
+
+form .btn-form {
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid #0369a1;
+    border-radius: 8px;
+    color: #0369a1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    gap: 4px;
+    padding: 0 16px;
+    transition: all 0.5s;
+}
+
+form .btn-form:hover {
+    background-color: #0369a1;
+    color: white;
+}
+
+.container-table thead {
+    background-color: #f0f0f0;
+}
+
+.container-table thead tr td {
+    padding: 4px;
+}
+
+.container-table tbody tr td {
+    padding: 16px 8px;
+}
+
+.container-modal {
+    display: none;
+}
+
+.container-modal.true {
+align-items: center;
+background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    height: 100vh;
+    inset: 0;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+}
+
+.container-modal.true .modal {
+    background-color: #fff;
+    display: grid;
+    gap: 16px;
+    grid-template-rows: 15% 85%;
+    height: 60%;
+    width: 45%;
+}
+
+.modal .header-modal {
+    align-items: center;
+    border-bottom: 1px solid rgb(212 212 216);
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    width: 100%;
+}
+
+.header-modal h2 {
+    font-size: 1.6rem;
+}
+
+.header-modal svg {
+    cursor: pointer;
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.modal-form {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 22px;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.container-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.container-input-group span {
+    font-weight: bold;
+}
+
+.container-input-group select {
+    border: 1px solid rgb(212 212 216);
+    border-radius: 8px;
+    padding: 6px 4px;
+    outline: none;
+    width: 100%;
+}
+
+.modal-btn {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.modal-btn button {
+    background-color: transparent;
+    border: 1px solid rgb(22 163 74);
+    border-radius: 8px;
+    color: rgb(22 163 74);
+    cursor: pointer;
+    padding: 8px 16px;
+    transition: all 0.5s;
+}
+
+.modal-btn button:hover {
+    background-color: rgb(22 163 74);
+    color: white;
+}
