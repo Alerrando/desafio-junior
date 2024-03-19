@@ -118,10 +118,10 @@ body {
     background-color: #f00;
 }
 
-.container-table td:last-child svg {
+.container-table td:last-child .delete-button {
     cursor: pointer;
-    height: 1.2rem;
-    width: 1.2rem;
+    height: 100%;
+    width: 40%;
 }
 
 .container-table tr:nth-child(even) {
