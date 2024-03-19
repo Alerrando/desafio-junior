@@ -5,11 +5,13 @@ const buttonAdd = document.querySelector('.btn-form');
 const containerModal = document.querySelector('.container-modal');
 const closeModal = document.querySelector('#close-modal');
 const formModal = document.querySelector('#form-modal-todo');
+const inputSearch = document.querySelector("#input-search");
 
 buttonAdd.addEventListener('click', openModal);
 closeModal.addEventListener('click', closeModalHandler);
 formModal.addEventListener('submit', handleSubmitForm);
 document.addEventListener('click', handleClick);
+inputSearch.addEventListener("keyup", (e) => filterSearchDescription(e.target.value));
 
 function openModal(e) {
   e.preventDefault();
@@ -44,6 +46,13 @@ function handleClick(e) {
   }
 }
 
+function filterSearchDescription(value){
+  renderTable(todoArray.filter((todo) => todo.description.replace(" ", "")
+      .toLowerCase()
+      .includes(value.replace(" ", "").toLowerCase())
+  ));
+}
+
 function toggleButtonStatus(e) {
   const id = e.target.getAttribute("data-id");
   const todo = todoArray.find(todo => todo.id === id);
@@ -64,13 +73,20 @@ function generateId() {
   return Math.random().toString(36).replace(/[^a-z]+/g, '');
 }
 
-function renderTable() {
+function renderTable(arrayAux) {
   orderPriorityAndStatus();
   const tbody = document.querySelector('tbody');
   tbody.innerHTML = '';
-  todoArray.forEach(todo => {
-    addToDoInTable(todo);
-  });
+
+  if(arrayAux === undefined){
+    todoArray.forEach(todo => {
+      addToDoInTable(todo);
+    });
+  } else{
+    arrayAux.forEach(todo => {
+      addToDoInTable(todo);
+    });
+  }
 }
 
 function orderPriorityAndStatus() {
