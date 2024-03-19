@@ -49,3 +49,40 @@ class TvLg extends TvSamsung{
     }
 }
 
+class ControlTv{
+    #brand;
+
+    constructor(brand){
+        this.#brand = brand;
+    }
+
+    getBrand(){
+        return this.#brand;
+    }
+
+    setBrand(brand){
+        this.#brand = brand;
+    }
+}
+
+const tvs = [];
+const controls = [
+    new ControlTv("Samsung"),
+    new ControlTv("LG")
+]
+
+const selectControl = document.querySelector("#control").value;
+
+function createTvClass(){
+    Array.from({ length: 4 }).forEach((__, index) => {
+        if(index < 2){
+            const tvSamsung = new TvSamsung("Samsung", false);
+            tvs.push(tvSamsung);
+        } else{
+            const tvLG = new TvLg("LG", false);
+            tvs.push(tvLG)
+        }
+    })
+}
+
+window.onload = createTvClass();
