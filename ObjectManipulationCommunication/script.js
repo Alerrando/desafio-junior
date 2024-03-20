@@ -1,88 +1,133 @@
 class TvSamsung {
     #brand = "Samsung";
-    #connect
+    #connect;
 
-    constructor(brand, connect){
+    constructor(brand, connect) {
         this.#brand = brand;
         this.#connect = connect;
     }
 
-    getBrand(){
+    getBrand() {
         return this.#brand;
     }
 
-    setBrand(brand){
+    setBrand(brand) {
         this.#brand = brand;
     }
 
-    
-    getConnect(){
+    getConnect() {
         return this.#connect;
     }
 
-    setConnect(connect){
+    setConnect(connect) {
         this.#connect = connect;
     }
 
-    toConnectTv(brand){
-        if(brand == this.getBrand()){
+    toConnectTv(brand) {
+        if (brand.toLowerCase() === this.getBrand().toLowerCase()) {
             this.setConnect(true);
-            return "Tv Ligada";
+            return {
+                message: "TV Ligada",
+                status: true,
+            };
         }
-        
-        return `O controle da marca ${brand} não consegue ligar essa TV`;
+        return {
+            message: `O controle da marca ${brand} não pode ligar essa TV`,
+            status: false,
+        };
     }
 
-    toOffTv(brand){
-        if(brand === this.getBrand()){
+    toOffTv(brand) {
+        if (brand.toLowerCase() === this.getBrand().toLowerCase()) {
             this.setConnect(false);
-            return "Tv Desligada";
+            return {
+                message: "TV Desligada",
+                status: true,
+            };
         }
-
-        return `O controle da marca ${brand} não consegue desligar essa TV`;
+        return {
+            message: `O controle da marca ${brand} não pode desligar essa TV`,
+            status: false,
+        };
     }
 }
 
-class TvLg extends TvSamsung{
-    constructor(){
-        super("LG");
+class TvLg extends TvSamsung {
+    constructor() {
+        super("LG", false);
     }
 }
 
-class ControlTv{
+class ControlTv {
     #brand;
 
-    constructor(brand){
+    constructor(brand) {
         this.#brand = brand;
     }
 
-    getBrand(){
+    getBrand() {
         return this.#brand;
     }
 
-    setBrand(brand){
+    setBrand(brand) {
         this.#brand = brand;
     }
 }
 
 const tvs = [];
-const controls = [
-    new ControlTv("Samsung"),
-    new ControlTv("LG")
-]
 
-const selectControl = document.querySelector("#control").value;
+document.addEventListener("click", (e) => {
+    if (e.target.getAttribute("data-id")) {
+        const selectControl = document.querySelector("#control").value;
+        const id = e.target.getAttribute("data-id");
+        let response = {};
 
-function createTvClass(){
-    Array.from({ length: 4 }).forEach((__, index) => {
-        if(index < 2){
-            const tvSamsung = new TvSamsung("Samsung", false);
-            tvs.push(tvSamsung);
-        } else{
-            const tvLG = new TvLg("LG", false);
-            tvs.push(tvLG)
+        if (tvs[id].getBrand().toLowerCase() === selectControl.toLowerCase()) {
+            e.target.classList.toggle("on");
         }
-    })
+
+        if (tvs[id].getConnect()) {
+            response = tvs[id].toOffTv(selectControl);
+        } else {
+            response = tvs[id].toConnectTv(selectControl);
+        }
+
+        toastMessageEvent(response);
+    }
+});
+
+function toastMessageEvent(response) {
+    const toastContainer = document.querySelector(".toast-container");
+    const toastMessage = document.querySelector(".toast-message");
+
+    toastContainer.classList.remove("true", "false");
+    toastMessage.innerHTML = response.message;
+    toastContainer.classList.add(response.status ? "true" : "false");
+
+    setTimeout(() => {
+        toastContainer.classList.remove("true", "false");
+    }, 5000);
 }
 
-window.onload = createTvClass();
+function createTv() {
+    Array.from({ length: 4 }).forEach((__, index) => {
+        const tv = index < 2 ? new TvSamsung("Samsung", false) : new TvLg("LG", false);
+        tvs.push(tv);
+    });
+
+    createTvsList();
+}
+
+function createTvsList() {
+    const tvsList = document.querySelector(".tvs-list");
+
+    tvs.forEach((tv, index) => {
+        const div = document.createElement("div");
+        div.innerHTML = `<span>${tv.getBrand()}</span>`;
+        div.classList.add("tv");
+        div.setAttribute("data-id", index);
+        tvsList.appendChild(div);
+    });
+}
+
+window.onload = createTv();
