@@ -1,4 +1,5 @@
 import  React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import * as XLSX from 'xlsx';
 
 type ExcelDataTypes = [
@@ -15,6 +16,7 @@ type ProductsExcelData = {
 }
 
 export function App() {
+	const [searchParams, setSearchParams] = useSearchParams();
 	const [excelData, setExcelData] = useState<[ExcelDataTypes[]]>([[]]);
 	const [products, setProducts] = useState<ProductsExcelData[]>([]);
 
@@ -26,7 +28,7 @@ export function App() {
 
 	return (
 		<>
-            <table>
+{/*             <table>
                 <thead>
                     <tr>
                         {excelData.length > 0 &&
@@ -45,13 +47,13 @@ export function App() {
                             </tr>
                         ))}
                 </tbody>
-            </table>
+            </table> */}
 
-			<section className="w-full h-[75vh] flex flex-col items-start justif-start">
-				<header className="w-[95%] flex items-center justify-between mx-auto">
+			<section className="w-full h-[75vh] flex flex-col items-start justif-start py-3 px-8">
+				<header className="w-full flex items-center justify-between mx-auto">
 					<h2>Products Balance Total</h2>
 
-					<select name="product" id="product" className="border border-[#D5D5D8] outline-none px-2 py-1 rounded" onClick={() => getProductsName()}>
+					<select name="product" id="product" className="border border-[#D5D5D8] outline-none px-2 py-1 rounded" onClick={e => getProductsName(e.target.value)}>
 						<option value="default" defaultChecked>Select Product</option>
 						{products.map((product: ProductsExcelData) => (
 							<option value={product.productName}>{product.productName}</option>
@@ -81,7 +83,7 @@ export function App() {
         reader.readAsBinaryString(blob);
     };
 
-	function getProductsName(){
+	function getProductsName(nameProduct: string){
 		const auxProducts: ProductsExcelData[] = [];
 		excelData.forEach((data: ExcelDataTypes[], index: number) => {
 			if(index > 0){
@@ -98,6 +100,11 @@ export function App() {
 			}
 		})
 
+		setSearchParams(state => {
+			nameProduct ? state.set("product", nameProduct) : state.delete("product");
+			
+			return state;
+		});
 		setProducts(auxProducts);
 	}
 
