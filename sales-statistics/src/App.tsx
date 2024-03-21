@@ -1,89 +1,108 @@
-import  React, { useEffect, useState } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import * as XLSX from 'xlsx';
+import * as XLSX from "xlsx";
+import { BarProduct } from "./components/BarProduct";
+import { HeaderStatistics } from "./components/HeaderStatistics";
 
 type ExcelDataTypes = [
 	string[]
 ];
 
-type ProductsExcelData = {
+export type ProductsExcelData = {
 	productName: string,
 	totalUnitsSold: number, 
 	totalRevenue: number, 
 	totalCost: number, 
 	totalProfit: number,
-
+	country: string;
 }
 
 export function App() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [excelData, setExcelData] = useState<[ExcelDataTypes[]]>([[]]);
 	const [products, setProducts] = useState<ProductsExcelData[]>([]);
+	const productName = searchParams.get("product") || null;
 
 	useEffect(() => {
 		(async () => {
 			await handleFileUpload();
-		}) ()
-	}, [])
+		}) ();
+	}, []);
+
+	useEffect(() => {
+		getProducts();
+	}, [excelData]);
+
+	if(products.length === 0) return <h1>Loading...</h1>;
 
 	return (
-		<>
-{/*             <table>
-                <thead>
-                    <tr>
-                        {excelData.length > 0 &&
-                            excelData[0].map((cell, index) => (
-                                <th key={index}>{cell}</th>
-                            ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {excelData.length > 1 &&
-                        excelData.slice(1).map((row, rowIndex) => (
-                            <tr key={rowIndex}>
-                                {row.map((cell, cellIndex) => (
-                                    <td key={cellIndex}>{cell}</td>
-                                ))}
-                            </tr>
-                        ))}
-                </tbody>
-            </table> */}
-
-			<section className="w-full h-[75vh] flex flex-col items-start justif-start py-3 px-8">
-				<header className="w-full flex items-center justify-between mx-auto">
-					<h2>Products Balance Total</h2>
-
-					<select name="product" id="product" className="border border-[#D5D5D8] outline-none px-2 py-1 rounded" onClick={e => getProductsName(e.target.value)}>
-						<option value="default" defaultChecked>Select Product</option>
-						{products.map((product: ProductsExcelData) => (
-							<option value={product.productName}>{product.productName}</option>
-						))}
-					</select>
-				</header>
+		<main className="h-screen w-full flex flex-wrap items-start justify-between gap-4">
+			<section className="w-[45%] h-auto flex flex-col items-start justif-start py-3 px-8 gap-4 shadow-lg">
+				<HeaderStatistics
+					arrayOptins={products}
+					atrributeOption="productName"
+					handleFilterStatistics={handleTypeProductUrl}
+					headerTitle="Products Total Balance"
+					nameSelect="product"
+					selectMensageDefault="Select Product"
+					key="product-header-statistics"
+				/>
+				{products.length > 0 && productName !== "default" &&
+						<BarProduct products={products} productName={productName} />
+				}
 			</section>
-		</>
+			
+			<section className="w-[45%] h-auto flex flex-col items-start justif-start py-3 px-8 gap-4 shadow-lg">
+				<HeaderStatistics
+					arrayOptins={products}
+					atrributeOption="country"
+					handleFilterStatistics={handleCountryTypeProductUrl}
+					headerTitle="Highest Revenue per Country"
+					nameSelect="country"
+					selectMensageDefault="Select Country"
+					key="country-header-statistics"
+				/>
+			</section>
+		</main>
 	);
 
 	async function handleFileUpload(){
 		const response = await fetch("../sales.csv");
-        const blob = await response.blob();
-        const reader = new FileReader();
+		const blob = await response.blob();
+		const reader = new FileReader();
 
-        reader.onload = (event) => {
+		reader.onload = (event) => {
 			if(!event.target) return;
-            const binaryString = event.target.result;
-            const workbook = XLSX.read(binaryString, { type: 'binary' });
-            const sheetName = workbook.SheetNames[0];
-            const sheet = workbook.Sheets[sheetName];
-            const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+			const binaryString = event.target.result;
+			const workbook = XLSX.read(binaryString, { type: "binary" });
+			const sheetName = workbook.SheetNames[0];
+			const sheet = workbook.Sheets[sheetName];
+			const data = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 			
 			setExcelData(data);
-        };
+		};
 
-        reader.readAsBinaryString(blob);
-    };
+		reader.readAsBinaryString(blob);
+	}
 
-	function getProductsName(nameProduct: string){
+	function handleTypeProductUrl(nameProduct: string){
+		setSearchParams(state => {
+			nameProduct ? state.set("product", nameProduct) : state.delete("product");
+			
+			return state;
+		});
+	}
+
+	function handleCountryTypeProductUrl(country: string){
+		setSearchParams(state => {
+			country ? state.set("country", country) : state.delete("country");
+			
+			return state;
+		});
+	}
+
+	function getProducts(){
 		const auxProducts: ProductsExcelData[] = [];
 		excelData.forEach((data: ExcelDataTypes[], index: number) => {
 			if(index > 0){
@@ -94,25 +113,20 @@ export function App() {
 						totalCost: parseFloat(data[12] as unknown as string),
 						totalProfit: parseFloat(data[13] as unknown as string),
 						totalRevenue: parseFloat(data[11] as unknown as string),
-						totalUnitsSold: parseFloat(data[8] as unknown as string)
+						totalUnitsSold: parseFloat(data[8] as unknown as string),
+						country: data[1] as unknown as string
 					});
 				}
 			}
-		})
-
-		setSearchParams(state => {
-			nameProduct ? state.set("product", nameProduct) : state.delete("product");
-			
-			return state;
 		});
 		setProducts(auxProducts);
 	}
 
 	function indexOfProductName(product: string, auxProducts: ProductsExcelData[]){
 		let verify = -1;
-		auxProducts.forEach((productAux: ProductsExcelData, __) => {
-			if(productAux.productName === product) { verify = 1};
-		})
+		auxProducts.forEach((productAux: ProductsExcelData) => {
+			if(productAux.productName === product) { verify = 1;}
+		});
 
 		return verify;
 	}
