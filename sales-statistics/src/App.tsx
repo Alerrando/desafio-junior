@@ -4,8 +4,9 @@ import { useSearchParams } from "react-router-dom";
 import * as XLSX from "xlsx";
 import { BarProduct } from "./components/BarProduct";
 import { HeaderStatistics } from "./components/HeaderStatistics";
+import { PieCountry } from "./components/PieCountry";
 
-type ExcelDataTypes = [
+export type ExcelDataTypes = [
 	string[]
 ];
 
@@ -63,6 +64,10 @@ export function App() {
 					selectMensageDefault="Select Country"
 					key="country-header-statistics"
 				/>
+
+				{products.length > 0 && productName !== "default" &&
+					<PieCountry excelData={excelData} products={products} countryName={productName} />
+				}
 			</section>
 		</main>
 	);
