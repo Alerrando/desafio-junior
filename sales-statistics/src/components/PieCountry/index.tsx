@@ -76,7 +76,7 @@ export function PieCountry({ excelData, products }: PieCountryProps){
     };
 
     return(
-        <Chart {...chartConfig} height="100%" width="180%" />
+        <Chart {...chartConfig} height="100%" width="300%" />
     );
 
     function getDatasCountries(){

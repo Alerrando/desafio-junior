@@ -3,17 +3,18 @@ import Chart from "react-apexcharts";
 import { ProductsExcelData } from "../../App";
 
 type BarProductProps = {
-    products: ProductsExcelData[],
-    productName: string;
+    products: ProductsExcelData[];
+    attribute: string;
+	atributeArray: keyof ProductsExcelData;
 }
 
-export function BarProduct({ products, productName }: BarProductProps){
-	const product = products.filter(product => product.productName === productName)[0];
+export function BarProduct({ products, attribute, atributeArray }: BarProductProps){
+	const product = products.filter((product: ProductsExcelData) => product[atributeArray] === attribute)[0];
 	
 	const chartConfig = {
 		type: "bar",
 		height: "100%",
-		width: "100%",
+		width: "150%",
 		series: [
 			{
 				name: "Sales",

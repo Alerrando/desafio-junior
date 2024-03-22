@@ -1,4 +1,5 @@
 import React from "react";
+import { ProductsExcelData } from "../../App";
 
 type HeaderStatisticsProps = {
     headerTitle: string;
