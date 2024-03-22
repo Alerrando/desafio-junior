@@ -10,7 +10,7 @@ type BarProductProps = {
 
 export function BarProduct({ products, attribute, atributeArray }: BarProductProps){
 	const product = products.filter((product: ProductsExcelData) => product[atributeArray] === attribute)[0];
-	
+
 	const chartConfig = {
 		type: "bar",
 		height: "100%",
@@ -19,10 +19,10 @@ export function BarProduct({ products, attribute, atributeArray }: BarProductPro
 			{
 				name: "Sales",
 				data: [
-					product.totalUnitsSold.toFixed(2), 
-					product.totalRevenue.toFixed(2), 
-					product.totalCost.toFixed(2), 
-					product.totalProfit.toFixed(2)
+					product ? product.totalUnitsSold.toFixed(2) : "", 
+					product ? product.totalRevenue.toFixed(2) : "", 
+					product ? product.totalCost.toFixed(2) : "", 
+					product ? product.totalProfit.toFixed(2) : ""
 				],
 			},
 		],
