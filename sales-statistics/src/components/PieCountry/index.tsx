@@ -5,115 +5,103 @@ import { ExcelDataTypes, ProductsExcelData } from "../../App";
 type PieCountryProps = {
     excelData: ExcelDataTypes,
     products: ProductsExcelData[],
-    countryName: string;
 }
 
-export function PieCountry({ excelData, countryName, products }: PieCountryProps){
-	const datas = getDatasCoutrys();
-	const country = products.map((product) => product.country);
+type DatasType = {
+	totalProfit: number,
+	nameTypeProduct: string,
+}
 
-	console.log(country.length, datas.length);
-	const chartConfig = {
-		type: "pie",
-		height: 360,
-		width: 550,
-		series: [
-			{
-				name: "Sales",
-				data: datas,
-			},
-		],
-		options: {
-			chart: {
-				toolbar: {
-					show: false,
-				},
-			},
-			title: {
-				show: "",
-			},
-			dataLabels: {
-				enabled: false,
-			},
-			colors: ["#020617"],
-			plotOptions: {
-				bar: {
-					columnWidth: "40%",
-					borderRadius: 2,
-				},
-			},
-			xaxis: {
-				axisTicks: {
-					show: false,
-				},
-				axisBorder: {
-					show: false,
-				},
-				labels: {
-					style: {
-						colors: "#616161",
-						fontSize: "12px",
-						fontFamily: "inherit",
-						fontWeight: 400,
-					},
-				},
-				categories: country,
-			},
-			yaxis: {
-				labels: {
-					style: {
-						colors: "#616161",
-						fontSize: "12px",
-						fontFamily: "inherit",
-						fontWeight: 400,
-					},
-				},
-			},
-			grid: {
-				show: true,
-				borderColor: "#dddddd",
-				strokeDashArray: 5,
-				xaxis: {
-					lines: {
-						show: true,
-					},
-				},
-				padding: {
-					top: 5,
-					right: 20,
-				},
-			},
-			fill: {
-				opacity: 0.8,
-			},
-			tooltip: {
-				theme: "dark",
-			},
-		},
-	};
+export function PieCountry({ excelData, products }: PieCountryProps){
+    const countrys = products.filter((product) => product.country !== "Country" && product.country);
+    const datas = getDatasCountries();
 
-	return(
-		<Chart {...chartConfig} />
-	);
+    const chartConfig = {
+        type: "bar",
+        series: [
+            {
+                name: "Total Profit",
+                data: datas.map((data) => data.totalProfit),
+            }
+        ],
+        options: {
+            chart: {
+                toolbar: {
+                    show: false,
+                },
+            },
+            xaxis: {
+                categories: datas.map((data) => data.nameTypeProduct),
+                labels: {
+                    style: {
+                        colors: "#616161",
+                        fontSize: "12px",
+                        fontFamily: "inherit",
+                        fontWeight: 400,
+                    },
+                },
+            },
+            yaxis: {
+                labels: {
+                    style: {
+                        colors: "#616161",
+                        fontSize: "12px",
+                        fontFamily: "inherit",
+                        fontWeight: 400,
+                    },
+                },
+            },
+            grid: {
+                show: true,
+                borderColor: "#dddddd",
+                strokeDashArray: 5,
+                padding: {
+                    top: 5,
+                    right: 20,
+                },
+            },
+            fill: {
+                opacity: 0.8,
+            },
+            tooltip: {
+                theme: "dark",
+                custom: function({series, seriesIndex, dataPointIndex, w}){
+                    const productType = datas[dataPointIndex].nameTypeProduct;
+                    return '<div class="tooltip">' + 
+                           '<span>' + productType + '</span>' +
+                           '</div>';
+                }
+            },
+        },
+    };
 
-	function getDatasCoutrys(){
-		const maiorRendaPorPais = {};
-		const aux = excelData.sort((product1: string[], product2: string[]) => {
-			const country1 = product1[1];
-			const country2 = product2[1];
-			return country1 < country2 ? -1 : country1 > country2 ? 1 : 0;
-		});
+    return(
+        <Chart {...chartConfig} height="100%" width="180%" />
+    );
 
-		aux.forEach((product: string[]) => {
-			const pais = product[1];
-			const rendaTotal = parseInt(product[11]);
+    function getDatasCountries(){
+        const highestIncomeCountries: DatasType[] = [];
+        const sortedExcelData = excelData.sort((product1: string[], product2: string[]) => {
+            const country1 = product1[1];
+            const country2 = product2[1];
+            return country1 < country2 ? -1 : country1 > country2 ? 1 : 0;
+        });
 
-			if (!maiorRendaPorPais[pais] || rendaTotal > maiorRendaPorPais[pais]) {
-				maiorRendaPorPais[pais] = rendaTotal;
-			}
-		});
+        countrys.forEach((info) => {
+            highestIncomeCountries.push(filterProductsByCountry(info.country, sortedExcelData));
+        });
 
+        return highestIncomeCountries;
+    }
 
-		return Object.values(maiorRendaPorPais);
-	}
+    function filterProductsByCountry(country: string, infos: ExcelDataTypes){
+        const countryProducts = infos.filter((product: string[]) => product[1] === country);
+        const maxProfit = Math.max(...countryProducts.map((product) => parseFloat(product[13])));
+        const highestProfitProduct = countryProducts.find((product) => parseFloat(product[13]) === maxProfit) as string[];
+        const returnFilter: DatasType = {
+            nameTypeProduct: highestProfitProduct[2],
+            totalProfit: parseFloat(highestProfitProduct[13]),
+        }
+        return returnFilter;
+    }
 }

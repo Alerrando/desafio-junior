@@ -12,8 +12,8 @@ export function BarProduct({ products, productName }: BarProductProps){
 	
 	const chartConfig = {
 		type: "bar",
-		height: 360,
-		width: 550,
+		height: "100%",
+		width: "100%",
 		series: [
 			{
 				name: "Sales",

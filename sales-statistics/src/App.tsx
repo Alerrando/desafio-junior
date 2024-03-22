@@ -21,7 +21,7 @@ export type ProductsExcelData = {
 
 export function App() {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const [excelData, setExcelData] = useState<[ExcelDataTypes[]]>([[]]);
+	const [excelData, setExcelData] = useState<ExcelDataTypes>([[]]);
 	const [products, setProducts] = useState<ProductsExcelData[]>([]);
 	const productName = searchParams.get("product") || null;
 
@@ -38,7 +38,7 @@ export function App() {
 	if(products.length === 0) return <h1>Loading...</h1>;
 
 	return (
-		<main className="h-screen w-full flex flex-wrap items-start justify-between gap-4">
+		<main className="h-screen w-full flex flex-col md:flex-row md:flex-wrap items-start md:justify-between gap-4">
 			<section className="w-[45%] h-auto flex flex-col items-start justif-start py-3 px-8 gap-4 shadow-lg">
 				<HeaderStatistics
 					arrayOptins={products}
@@ -49,8 +49,8 @@ export function App() {
 					selectMensageDefault="Select Product"
 					key="product-header-statistics"
 				/>
-				{products.length > 0 && productName !== "default" &&
-						<BarProduct products={products} productName={productName} />
+				{products.length > 0 && productName &&  productName !== "default" &&
+						<BarProduct products={products} productName={productName as string} />
 				}
 			</section>
 			
@@ -66,7 +66,7 @@ export function App() {
 				/>
 
 				{products.length > 0 && productName !== "default" &&
-					<PieCountry excelData={excelData} products={products} countryName={productName} />
+					<PieCountry excelData={excelData} products={products} />
 				}
 			</section>
 		</main>
@@ -109,17 +109,16 @@ export function App() {
 
 	function getProducts(){
 		const auxProducts: ProductsExcelData[] = [];
-		excelData.forEach((data: ExcelDataTypes[], index: number) => {
+		excelData.forEach((data: string[], index: number) => {
 			if(index > 0){
-				const product: string = data[2] as unknown as string;
-				if(indexOfProductName(product, auxProducts) === -1){
+				if(indexOfProductName(data[2], auxProducts) === -1){
 					auxProducts.push({
-						productName: product,
-						totalCost: parseFloat(data[12] as unknown as string),
-						totalProfit: parseFloat(data[13] as unknown as string),
-						totalRevenue: parseFloat(data[11] as unknown as string),
-						totalUnitsSold: parseFloat(data[8] as unknown as string),
-						country: data[1] as unknown as string
+						productName: data[2],
+						totalCost: parseFloat(data[12]),
+						totalProfit: parseFloat(data[13]),
+						totalRevenue: parseFloat(data[11]),
+						totalUnitsSold: parseFloat(data[8]),
+						country: data[1]
 					});
 				}
 			}
