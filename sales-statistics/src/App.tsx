@@ -75,7 +75,7 @@ export function App() {
 
 	function getProducts(){
 		const auxProducts: ProductsExcelData[] = [];
-		excelData.filter((__, index) => index > 0).forEach((data: string[], index: number) => {
+		excelData.filter((__, index) => index > 0).forEach((data: string[]) => {
 			if(indexOfProductName(data[2], auxProducts) === -1){
 				auxProducts.push({
 					productName: data[2],
