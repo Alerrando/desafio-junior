@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 
 .main-container {
@@ -52,10 +52,18 @@ form .input-header {
     width: 100%;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 form .btn {
     background-color: rgb(22 163 74);
     border: none;
     border-radius: 6px;
+    color: white;
     cursor: pointer;
     height: 100%;
     padding: 6px 12px;
@@ -68,6 +76,7 @@ form .btn:hover {
 
 .main-container .main-body {
     display: flex;
+    flex-direction: column;
     gap: 1rem;
     height: 100%;
 }
@@ -76,6 +85,8 @@ form .btn:hover {
     box-shadow:
         0 10px 15px -3px rgb(0 0 0 / 0.1),
         0 4px 6px -4px rgb(0 0 0 / 0.1);
+    border: 1px solid #f2f2f2;
+    border-radius: 6px;
     display: flex;
     height: min-content;
     gap: 1.5rem;
@@ -97,7 +108,7 @@ form .btn:hover {
     width: 100%;
 }
 
-.repository-infos .repository-description{
+.repository-infos .repository-description {
     font-size: 14px;
     opacity: 0.6;
 }
