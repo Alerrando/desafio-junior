@@ -12,8 +12,8 @@
         <div class="card-header">
             <h1 class="card-title">Financing Simulator</h1>
         </div>
-        <div class="container row row-cols-2">
-            <div class="w-50">
+        <div class="container row row-cols-lg-2 row-cols-md-1">
+            <div class="w-100">
                 <form class="d-grid gap-4">
                     <div class="form-group">
                         <label for="inputValueFinancement">Valor total do financiamento</label>
@@ -21,35 +21,36 @@
                     </div>
                     <div class="form-group d-grid">
                         <label for="quantPortion" id="quantPortion" class="form-label">Quantidade de Parcela</label>
-                        <input type="range" class="form-range" min="0" max="64" step="4" id="quantPortion" value="0">
+                        <input type="range" class="form-range" min="0" max="360" step="4" id="quantPortion" value="0" onchange="showQuantPortion(this)">
                     </div>
                     <div class="form-group">
-                        <label for="nominalInterestRate">Taxa nominal de juros anual</label>
+                        <label for="nominalInterestRate">Taxa nominal de juros anual (%)</label>
                         <input type="number" class="form-control" id="nominalInterestRate" aria-describedby="InterestRate" placeholder="Insira a taxa de juros anual">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
-            <div class="w-50 flex flex-col">
+
+            <div class="w-100 flex flex-col pt-4">
                 <div class="flex flex-col">
-                    <span class="font-semibold">Valor total do financiamento</span>
+                    <span class="font-semibold">Valor total do financiamento:</span>
                     <h1 id="valueTotalFinancement">R$0,00</h1>
                 </div>
 
                 <div class="flex py-2">
-                    <span class="font-semibold">Valor das parcelas</span>
+                    <span class="font-semibold">Valor das parcelas:</span>
                     <span class="text-3xl" id="valueRange">R$0,00</spa>
                 </div>
 
                 <div class="flex py-2">
-                    <span class="font-semibold">Custo efetivo total do financiamento</span>
+                    <span class="font-semibold">Custo efetivo total do financiamento:</span>
                     <span class="text-3xl" id="totalEffectiveCostFinancing">R$0,00</spa>
                 </div>
 
                 <div class="flex py-2">
                     <span class="font-semibold">Taxa efetiva mensal</span>
-                    <span class="text-3xl" id="valueTotalFinancement">0,0%</spa>
+                    <span class="text-3xl" id="effectiveMonthlyRate">0,0%</spa>
                 </div>
             </div>
         </div>
