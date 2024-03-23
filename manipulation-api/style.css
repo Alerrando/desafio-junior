@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    gap: 1rem;
+    width: 40%;
+}
+
+.main-header {
+    border-bottom: 1px solid #d5d5d8;
+    height: auto;
+    padding: 8px 0;
+    width: 100%;
+}
+
+.main-header form {
+    gap: 8px;
+}
+
+.main-header form,
+form .input-header {
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.input-header {
+    border: 1px solid #d5d5d8;
+    border-radius: 8px;
+    gap: 12px;
+    padding: 4px 6px;
+}
+
+.input-header input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+form .btn {
+    background-color: rgb(22 163 74);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 100%;
+    padding: 6px 12px;
+    transition: background-color 0.5s;
+}
+
+form .btn:hover {
+    background-color: rgb(21 128 61);
+}
+
+.main-container .main-body {
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+}
+
+.container-repository {
+    box-shadow:
+        0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+    display: flex;
+    height: min-content;
+    gap: 1.5rem;
+    padding: 12px 1rem;
+    width: 100%;
+}
+
+.container-repository > svg {
+    height: 100%;
+    margin: auto 0;
+    width: 2rem;
+}
+
+.container-repository .repository-infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
+.repository-infos .repository-description{
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.repository-infos .infos {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.infos .infos-lang-stars {
+    display: flex;
+    gap: 12px;
+}
+
+.stars {
+    align-items: center;
+    display: flex;
+    gap: 4px;
+}
