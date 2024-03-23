@@ -16,11 +16,13 @@ async function getRepositories(name){
 }
 
 function showRepositories(response){
-    const mainBody = document.querySelector(".main-body");
+    const userList = document.querySelector(".user-list");
 
     if(response.length > 0){
+        const h1 = document.querySelector("h1");
+        h1.innerHTML = `Repositórios do usuário: ${response[0].owner.login}`
         response.forEach((repository) => {
-            mainBody.innerHTML += `
+            userList.innerHTML += `
                 <div class="container-repository">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-bookmark-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M6 1h6v7a.5.5 0 0 1-.757.429L9 7.083 6.757 8.43A.5.5 0 0 1 6 8z"/>
@@ -50,6 +52,6 @@ function showRepositories(response){
         })
     }
     else{
-        mainBody.innerHTML = "<h1>Nenhum repositório encontrado</h1>"
+        userList.innerHTML = "<h1>Nenhum repositório encontrado</h1>"
     }
 }
