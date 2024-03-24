@@ -68,9 +68,9 @@ Certifique em ter o Node.js e o npm instalados em seu computador antes de execut
 <img src="./github/object-manipulation-communication.gif" />
 
 ### Sales Statistics
-
+<img src="./github/sales-statistics.gif" />
 
 ### Financing Simulator
-
+<img src="./github/financing-simulator.gif" />
 
 ### Manipulation API
