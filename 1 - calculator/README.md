@@ -1,6 +1,6 @@
 # Calculadora Básica
 
-Este é um exercício de uma calculadora básica que realiza as operações de soma, subtração, multiplicação e divisão.
+Este diretório contém uma solução para o exercício "Calculadora Básica".
 
 ## Descrição do Exercício
 
