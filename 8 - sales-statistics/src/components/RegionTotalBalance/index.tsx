@@ -13,7 +13,7 @@ export function RegionTotalBalance({ products }: RegionTotalBalanceProps){
 	const regionName = searchParams.get("region") || null;
 
 	return(
-		<section className="w-[45%] max-h-[45%] h-full flex flex-col items-start justif-start py-3  gap-4 shadow-lg">
+		<section className="w-[45%] max-h-[45%] h-full flex flex-col items-start justif-start p-3 gap-4 shadow-lg">
 			<HeaderStatistics
 				arrayOptins={products}
 				atrributeOption="regionName"

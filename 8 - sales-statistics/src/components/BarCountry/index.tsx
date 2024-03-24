@@ -65,11 +65,9 @@ export function BarCountry({ excelData, products }: BarCountryProps){
 			},
 			tooltip: {
 				theme: "dark",
-				custom: function({ __, __, dataPointIndex, __ }){
-					const productType = datas[dataPointIndex].nameTypeProduct;
-					return "<div class=\"tooltip\">" + 
-                           "<span>" + productType + "</span>" +
-                           "</div>";
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
+				custom: function({ __: _1, __: _2, dataPointIndex, __: _3 }){
+					return `<div class="tooltip"><span>"${datas[dataPointIndex].nameTypeProduct}"</span></div>"`;
 				}
 			},
 		},
