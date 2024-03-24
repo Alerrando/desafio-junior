@@ -65,6 +65,9 @@ Certifique em ter o Node.js e o npm instalados em seu computador antes de execut
 <img src="./github/to-do.gif" />
 
 ### Object Manipulation Communication
+<img src="./github/object-manipulation-communication.gif" />
+
+### Sales Statistics
 
 
 ### Financing Simulator
