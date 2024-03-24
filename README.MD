@@ -49,6 +49,7 @@ Certifique em ter o Node.js e o npm instalados em seu computador antes de execut
 <img src="./github/calculator.gif" />
 
 ### Bigger or Smaller
+<img src="./github/bigger-or-smaller.gif" />
 
 
 ### Calc Geometrics
