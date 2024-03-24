@@ -17,6 +17,7 @@ async function getRepositories(name){
 
 function showRepositories(response){
     const userList = document.querySelector(".user-list");
+    userList.innerHTML = "";
 
     if(response.length > 0){
         const h1 = document.querySelector("h1");
