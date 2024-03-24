@@ -102,7 +102,8 @@ body {
     text-align: center;
 }
 
-.container-table td:nth-child(3) .on, .container-table td:nth-child(3) .off {
+.container-table td:nth-child(3) .on,
+.container-table td:nth-child(3) .off {
     border: none;
     border-radius: 4px;
     color: #fff;
@@ -110,7 +111,7 @@ body {
     outline: none;
 }
 
-.container-table td:nth-child(3) .on{
+.container-table td:nth-child(3) .on {
     background-color: #0f0;
 }
 
@@ -122,6 +123,15 @@ body {
     cursor: pointer;
     height: 100%;
     width: 40%;
+}
+
+.container-table tbody tr td:last-child {
+    cursor: pointer;
+}
+
+.container-table tbody tr td:last-child svg {
+    height: 45%;
+    width: 45%;
 }
 
 .container-table tr:nth-child(even) {
