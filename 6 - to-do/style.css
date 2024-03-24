@@ -126,10 +126,11 @@ body {
 }
 
 .container-table tbody tr td:last-child {
-    cursor: pointer;
+    padding: 4px;
 }
 
 .container-table tbody tr td:last-child svg {
+    cursor: pointer;
     height: 45%;
     width: 45%;
 }
