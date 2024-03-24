@@ -2,7 +2,7 @@ import React from "react";
 import Chart from "react-apexcharts";
 import { ExcelDataTypes, ProductsExcelData } from "../../App";
 
-type PieCountryProps = {
+type BarCountryProps = {
     excelData: ExcelDataTypes,
     products: ProductsExcelData[],
 }
@@ -12,7 +12,7 @@ type DatasType = {
 	nameTypeProduct: string,
 }
 
-export function PieCountry({ excelData, products }: PieCountryProps){
+export function BarCountry({ excelData, products }: BarCountryProps){
 	const countrys = products.filter((product) => product.country !== "Country" && product.country);
 	const datas = getDatasCountries();
 

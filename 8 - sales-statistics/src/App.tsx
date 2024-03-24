@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
-import { PieCountry } from "./components/PieCountry";
+import { BarCountry } from "./components/BarCountry";
 import { ProductsTotalBalance } from "./components/ProductsTotalBalance";
 import { RegionTotalBalance } from "./components/RegionTotalBalance";
 
@@ -48,7 +48,7 @@ export function App() {
 				</header>
 
 				{products.length > 0 &&
-					<PieCountry excelData={excelData} products={products} />
+					<BarCountry excelData={excelData} products={products} />
 				}
 			</section>
 		</main>
