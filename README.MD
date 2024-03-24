@@ -59,7 +59,7 @@ Certifique em ter o Node.js e o npm instalados em seu computador antes de execut
 <img src="./github/guessing-game.gif" />
 
 ### Verify Password
-
+<img src="./github/verify-password.gif" />
 
 ### To Do
 
