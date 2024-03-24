@@ -43,3 +43,30 @@ npm run dev
 
 ## Observações
 Certifique em ter o Node.js e o npm instalados em seu computador antes de executar os projetos.
+
+### Demos
+### Calculator
+<img src="./github/calculator.gif" />
+
+### Bigger or Smaller
+
+
+### Calc Geometrics
+
+
+### Guessing Game
+
+
+### Verify Password
+
+
+### To Do
+
+
+### Object Manipulation Communication
+
+
+### Financing Simulator
+
+
+### Manipulation API
