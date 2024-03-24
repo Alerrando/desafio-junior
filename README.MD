@@ -53,7 +53,7 @@ Certifique em ter o Node.js e o npm instalados em seu computador antes de execut
 
 
 ### Calc Geometrics
-
+<img src="./github/calc-geometrics.gif" />
 
 ### Guessing Game
 

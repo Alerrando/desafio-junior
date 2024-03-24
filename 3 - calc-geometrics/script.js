@@ -1,3 +1,8 @@
+const buttonSquare = document.querySelector("#calc-square");
+const buttonRetangle = document.querySelector("#calc-rectangle");
+const buttonTriangle = document.querySelector("#calc-triangle");
+const buttonCircle = document.querySelector("#calc-circle");
+
 buttonSquare.addEventListener("click", () => {
     const inputAreaX = document.querySelector("#area-x");
     const inputAreaY = document.querySelector("#area-y");
