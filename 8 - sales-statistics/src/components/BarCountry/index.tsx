@@ -10,6 +10,7 @@ type BarCountryProps = {
 type DatasType = {
 	totalProfit: number,
 	nameTypeProduct: string,
+	countryName: string;
 }
 
 export function BarCountry({ excelData, products }: BarCountryProps){
@@ -31,7 +32,7 @@ export function BarCountry({ excelData, products }: BarCountryProps){
 				},
 			},
 			xaxis: {
-				categories: datas.map((data) => data.nameTypeProduct),
+				categories: datas.map((data) => data.countryName),
 				labels: {
 					style: {
 						colors: "#616161",
@@ -67,14 +68,14 @@ export function BarCountry({ excelData, products }: BarCountryProps){
 				theme: "dark",
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				custom: function({ __: _1, __: _2, dataPointIndex, __: _3 }){
-					return `<div class="tooltip"><span>"${datas[dataPointIndex].nameTypeProduct}"</span></div>"`;
+					return `<div class="tooltip"><span>${datas[dataPointIndex].nameTypeProduct}</span></div>`;
 				}
 			},
 		},
 	};
 
 	return(
-		<Chart {...chartConfig} height="100%" width="300%" />
+		<Chart {...chartConfig} height="100%" width="400%" />
 	);
 
 	function getDatasCountries(){
@@ -99,6 +100,7 @@ export function BarCountry({ excelData, products }: BarCountryProps){
 		const returnFilter: DatasType = {
 			nameTypeProduct: highestProfitProduct[2],
 			totalProfit: parseFloat(highestProfitProduct[13]),
+			countryName: country,
 		};
 		return returnFilter;
 	}
